@@ -1,0 +1,378 @@
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sun Aug 31 2025 09:34:38 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="6648782b093df9eadebdccc4" data-wf-site="6648782b093df9eadebdccbd" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Typefast | Test your typing skills</title>
+  <meta content="Push your limits with a typing game designed for desktop. Improve focus, build accuracy, and discover how quickly you can type." name="description">
+  <meta content="Typefast | Test your typing skills" property="og:title">
+  <meta content="Push your limits with a typing game designed for desktop. Improve focus, build accuracy, and discover how quickly you can type." property="og:description">
+  <meta content="https://cdn.prod.website-files.com/6648782b093df9eadebdccbd/68ac678af9ab3bee1c0697ba_typefast%20opengraph.png" property="og:image">
+  <meta content="Typefast | Test your typing skills" property="twitter:title">
+  <meta content="Push your limits with a typing game designed for desktop. Improve focus, build accuracy, and discover how quickly you can type." property="twitter:description">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/typefaster.webflow.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+  <script>
+  window.addEventListener('keydown', function(e) {
+    // Check if the key pressed is the spacebar
+    if (e.code === 'Space' && e.target === document.body) {
+      e.preventDefault(); // Prevent default scrolling behavior
+    }
+  });
+</script>
+  <style>
+div {
+    transition: all 0.5s ease;
+}
+.correct {
+    color: #859200; /* green for correct words */
+}
+textarea {
+    resize: none;
+}
+span {
+    margin-right: 0;
+    padding: 0;
+}
+.incorrect {
+    background-color: #e22026; /* red */
+    color: #ffffff; /* white */
+    border-radius: 0; /* remove border radius */
+}
+.cursor {
+    border-color: #859200;
+    border-width: 0.3vw; /* changed from 3px to vw */
+    border-style: none none solid none;
+}
+</style>
+</head>
+<body>
+  <div class="page-wrapped">
+    <section id="top" class="top-bar"><img src="images/typefast-logo.svg" loading="lazy" alt="" class="typefast-logo">
+      <p class="mobile-only">This is currently a <strong class="bold-text">desktop experience.</strong> A keyboard is required. Mobile support is being explored.</p>
+    </section>
+    <section class="div-block mobile-only">
+      <div class="div-block-3"><img src="images/Typefast-red-logo.svg" loading="lazy" alt="" class="logo">
+        <p class="paragraph h-m">Something simple to test out those keyboard skills. Minimal and focused. Thank you for your time.</p>
+        <p class="paragraph">Only available on Desktop.</p>
+      </div>
+    </section>
+    <section class="type-hold">
+      <div class="w-layout-vflex grid-outline">
+        <div class="w-layout-vflex flex-block">
+          <div id="restart" class="button-hold w-node-_1fd3ecfd-e501-f1c1-1e7f-373b441cfb1f-debdccc4">
+            <div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ic" width="100%" height="100%" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+                <path fill="currentColor" d="M12 6v3l4-4l-4-4v3c-4.42 0-8 3.58-8 8c0 1.57.46 3.03 1.24 4.26L6.7 14.8A5.9 5.9 0 0 1 6 12c0-3.31 2.69-6 6-6m6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8c0 3.31-2.69 6-6 6v-3l-4 4l4 4v-3c4.42 0 8-3.58 8-8c0-1.57-.46-3.03-1.24-4.26"></path>
+              </svg></div>
+            <p>Restart</p>
+          </div>
+          <h1 class="grid-title">type to start</h1>
+          <div id="newquote" class="button-hold w-node-e2de0082-f8d3-241d-d12b-5e634f3fe582-debdccc4">
+            <div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ic" width="100%" height="100%" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+                <path fill="currentColor" d="M7 15v2h10v-2zm-4 6h18v-2H3zm0-8h18v-2H3zm4-6v2h10V7zM3 3v2h18V3z"></path>
+              </svg></div>
+            <p>New Quote</p>
+          </div>
+        </div>
+        <div class="typing-container w-container">
+          <p id="quoteDisplay" class="quote"></p>
+          <div class="progressive-bar">
+            <div id="dynamicBar" class="dynamic-bar"></div>
+          </div>
+          <div class="columns w-row">
+            <div class="result-column w-col w-col-6">
+              <p class="label"><span id="stats" class="resultnumbers">00</span></p>
+              <p class="label thick">Words per minute</p>
+            </div>
+            <div id="tryAgain" class="result-column right w-col w-col-6">
+              <p class="label thick">Accuracy</p>
+              <p class="label percent"><span id="accuracy" class="resultnumbers">00</span>%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="w-layout-vflex section-hold">
+      <div class="lead-hold">
+        <div class="w-layout-vflex grid-outline lead">
+          <div class="w-layout-vflex flex-block lead">
+            <h1 id="w-node-_4324081c-65e5-9afc-ec8a-1c09814775a7-debdccc4" class="grid-title leader">leaderboard</h1>
+          </div>
+          <div class="w-layout-vflex flex-block lead">
+            <div id="clear-score" class="button-hold w-node-ecc3cdef-6c24-b5bc-739b-976c4da0e1d7-debdccc4">
+              <div class="icon-embed-xxsmall w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ic" width="100%" height="100%" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+                  <path fill="currentColor" d="m19.81 14.99l1.19-.92l-1.43-1.43l-1.19.92zm-.45-4.72L21 9l-9-7l-2.91 2.27l7.87 7.88zM3.27 1L2 2.27l4.22 4.22L3 9l1.63 1.27L12 16l2.1-1.63l1.43 1.43L12 18.54l-7.37-5.73L3 14.07l9 7l4.95-3.85L20.73 21L22 19.73z"></path>
+                </svg></div>
+              <p>Clear Scores</p>
+            </div>
+          </div>
+          <div class="titles">
+            <div class="div-block-4">
+              <div id="w-node-_5725e8ec-7a33-1311-6478-e14910b5333b-debdccc4">Rank</div>
+              <div id="w-node-_9f03c79f-4270-9164-2474-11d77955f6f5-debdccc4">Words Per Minute</div>
+              <div id="w-node-b3a0fac0-d1d6-d23b-8d44-e9539eb4311d-debdccc4">Accuracy</div>
+            </div>
+          </div>
+          <div class="scores">
+            <div class="lead-answer">
+              <div id="w-node-_7daa07d4-ce51-f411-82c2-263eb5db5922-debdccc4">#<span class="rank-number">01</span></div>
+              <div id="w-node-_7daa07d4-ce51-f411-82c2-263eb5db5924-debdccc4"><span id="01" class="wpm-number">00</span> WPM</div>
+              <div id="w-node-_7daa07d4-ce51-f411-82c2-263eb5db5926-debdccc4"><span id="a01" class="accuracy-number">00</span>%</div>
+            </div>
+            <div class="div-block-5"></div>
+            <div class="lead-answer">
+              <div id="w-node-_0d3b0106-17e6-10e3-0b27-9c23017e9d1e-debdccc4">#<span class="rank-number">02</span></div>
+              <div id="w-node-_0d3b0106-17e6-10e3-0b27-9c23017e9d22-debdccc4"><span id="02" class="wpm-number">00</span> WPM</div>
+              <div id="w-node-_0d3b0106-17e6-10e3-0b27-9c23017e9d26-debdccc4"><span id="a02" class="accuracy-number">00</span>%</div>
+            </div>
+            <div class="div-block-5"></div>
+            <div class="lead-answer">
+              <div id="w-node-a594ea85-1475-7094-5192-cd336d42fa27-debdccc4">#<span class="rank-number">03</span></div>
+              <div id="w-node-a594ea85-1475-7094-5192-cd336d42fa2b-debdccc4"><span id="03" class="wpm-number">00</span> WPM</div>
+              <div id="w-node-a594ea85-1475-7094-5192-cd336d42fa2f-debdccc4"><span id="a03" class="accuracy-number">00</span>%</div>
+            </div>
+            <div class="div-block-5"></div>
+            <div class="lead-answer">
+              <div id="w-node-b46c9911-71ad-8e00-7ef7-c8becd9787b2-debdccc4">#<span class="rank-number">04</span></div>
+              <div id="w-node-b46c9911-71ad-8e00-7ef7-c8becd9787b6-debdccc4"><span id="04" class="wpm-number">00</span> WPM</div>
+              <div id="w-node-b46c9911-71ad-8e00-7ef7-c8becd9787ba-debdccc4"><span id="a04" class="accuracy-number">00</span>%</div>
+            </div>
+            <div class="div-block-5"></div>
+            <div class="lead-answer">
+              <div id="w-node-fea0c8f4-0442-1e83-1783-6546018da31f-debdccc4">#<span class="rank-number">05</span></div>
+              <div id="w-node-fea0c8f4-0442-1e83-1783-6546018da323-debdccc4"><span id="05" class="wpm-number">00</span> WPM</div>
+              <div id="w-node-fea0c8f4-0442-1e83-1783-6546018da327-debdccc4"><span id="a05" class="accuracy-number">00</span>%</div>
+            </div>
+            <div class="div-block-5"></div>
+          </div>
+          <div class="w-layout-vflex flex-block lead btm">
+            <h1 id="w-node-e25186c3-bfea-bbf4-9f97-bc7153ba17f9-debdccc4" class="grid-title leader">Your average</h1>
+          </div>
+          <div class="btm-col w-row">
+            <div class="avg-col w-col w-col-6">
+              <p class="avg-label"><span id="wpm" class="avg-wpm">00</span></p>
+              <p class="avg-label">Words per minute</p>
+            </div>
+            <div id="tryAgain" class="avg-col right w-col w-col-6">
+              <div class="w-layout-vflex flex-block-2">
+                <p class="avg-acc right"><span id="accuracy" class="avg-acc">00</span></p>
+                <p class="perc right">%</p>
+              </div>
+              <p class="avg-label">Accuracy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-layout-vflex section-hold _1st">
+      <div class="under-foot dark"><img src="images/green-logo.svg" loading="lazy" width="46" alt="" class="footer-btm-im logo">
+        <div class="text-block-2">Thank you for the support :)</div>
+        <div class="div-block-6">
+          <a href="https://forms.gle/hqQJBiEnAENv2HEu6" target="_blank" class="footer-btn w-inline-block">
+            <div>Submit a quote</div>
+          </a>
+          <a href="https://buymeacoffee.com/leolune" target="_blank" class="footer-btn fill w-inline-block">
+            <div>Buy me a coffee</div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="w-layout-vflex section-hold _3vw">
+      <div class="under-foot">
+        <div class="footer-second-text">© 2025 Typefast. Made by <a href="https://leolune.com/" target="_blank" class="linked-inner">@Leolune</a>
+        </div><img src="images/ll-dark.svg" loading="lazy" width="46" id="w-node-f7b2c9f2-3a2c-cdbe-e931-d31aa4d8d065-debdccc4" alt="" class="footer-btm-im">
+        <div id="w-node-_2edd8153-5d2e-e873-7c35-c61e00eabf00-debdccc4" class="w-layout-vflex foot-links">
+          <div class="footer-second-text">
+            <a href="https://x.com/leolunelove" target="_blank" class="linked-inner no-underline">Twitter</a>
+          </div>
+          <div class="footer-second-text">
+            <a href="https://www.instagram.com/leolune.art/" target="_blank" class="linked-inner no-underline">Instagram</a>
+          </div>
+          <div class="footer-second-text">
+            <a href="https://linktr.ee/leolune" target="_blank" class="linked-inner no-underline">Linktree</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#top" class="div-block footer w-inline-block">
+      <div class="footer-diiv">
+        <p class="paragraph footer">back to top</p>
+      </div>
+    </a>
+  </div>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6648782b093df9eadebdccbd" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="js/webflow.js" type="text/javascript"></script>
+  <script>
+const RANDOM_QUOTE_API_URL = 'https://raw.githubusercontent.com/Silkenlofi/quotes/refs/heads/main/quotes.json';
+const quoteDisplayElement = document.getElementById('quoteDisplay');
+let quotesCache = [];
+let currentQuote = "";
+let activeKeydown = null;
+let statsResetPending = true;
+// leaderboard data
+let leaderboard = []; // { wpm, accuracy }
+async function getRandomQuote() {
+  try {
+    if (quotesCache.length === 0) {
+      const res = await fetch(RANDOM_QUOTE_API_URL);
+      quotesCache = await res.json();
+    }
+    const quote = quotesCache[Math.floor(Math.random() * quotesCache.length)];
+    return quote || "May the odds be ever in your favor.";
+  } catch (err) {
+    console.error("Error fetching quote:", err);
+    return "May the odds be ever in your favor.";
+  }
+}
+function updateLeaderboard(wpm, accuracy) {
+  leaderboard.push({ wpm, accuracy });
+  leaderboard.sort((a, b) => b.wpm - a.wpm); // sort highest WPM first
+  leaderboard = leaderboard.slice(0, 5); // keep only top 5
+  leaderboard.forEach((entry, i) => {
+    const rank = String(i + 1).padStart(2, '0'); // 01, 02, 03...
+    const wpmEl = document.getElementById(rank);
+    const accEl = document.getElementById('a' + rank);
+    if (wpmEl) wpmEl.innerText = entry.wpm;
+    if (accEl) accEl.innerText = entry.accuracy;
+  });
+  // Update averages
+  if (leaderboard.length > 0) {
+    const totalWpm = leaderboard.reduce((sum, entry) => sum + entry.wpm, 0);
+    const totalAcc = leaderboard.reduce((sum, entry) => sum + entry.accuracy, 0);
+    const avgWpm = Math.round(totalWpm / leaderboard.length);
+    const avgAcc = Math.round(totalAcc / leaderboard.length);
+    document.querySelectorAll('.avg-wpm').forEach(el => el.innerText = avgWpm);
+    document.querySelectorAll('.avg-acc').forEach(el => el.innerText = avgAcc);
+  } else {
+    document.querySelectorAll('.avg-wpm').forEach(el => el.innerText = '00');
+    document.querySelectorAll('.avg-acc').forEach(el => el.innerText = '00');
+  }
+}
+async function renderNewQuote(useSame = false) {
+  if (activeKeydown) {
+    document.removeEventListener('keydown', activeKeydown);
+    activeKeydown = null;
+  }
+  currentQuote = useSame && currentQuote ? currentQuote : await getRandomQuote();
+  quoteDisplayElement.innerHTML = '';
+  const characters = currentQuote.split('').map((char) => {
+    const span = document.createElement('span');
+    span.innerText = char;
+    quoteDisplayElement.appendChild(span);
+    return span;
+  });
+  let cursorIndex = 0;
+  let cursorCharacter = characters[cursorIndex];
+  cursorCharacter.classList.add('cursor');
+  let typeCorrect = 0;
+  let typeSum = 0;
+  let startTime = null;
+  const normalizeChar = (char) => {
+    if (char === '’' || char === '`' || char === '‘') return "'";
+    if (char === '“' || char === '”') return '"';
+    if (char === '–' || char === '—') return '-';
+    return char;
+  };
+  const updateStats = () => {
+    if (!startTime) return;
+    const delta = new Date() - startTime;
+    const minutes = delta / 1000 / 60;
+    const wpm = minutes > 0 ? Math.round((typeSum / 5) / minutes) : 0;
+    const accuracy = typeSum === 0 ? 0 : Math.round((typeCorrect / typeSum) * 100);
+    document.getElementById('stats').innerText = wpm;
+    document.getElementById('accuracy').innerText = accuracy;
+    return { wpm, accuracy };
+  };
+  const resetStatsAndProgress = () => {
+    typeCorrect = 0;
+    typeSum = 0;
+    startTime = null;
+    cursorIndex = 0;
+    cursorCharacter = characters[cursorIndex];
+    characters.forEach(char => char.classList.remove('correct', 'incorrect', 'cursor'));
+    cursorCharacter.classList.add('cursor');
+    document.getElementById('stats').innerText = '0';
+    document.getElementById('accuracy').innerText = '0';
+    document.getElementById('dynamicBar').style.width = '0%';
+    statsResetPending = false;
+  };
+  const keydown = ({ key }) => {
+    if (statsResetPending) resetStatsAndProgress();
+    if (!startTime) startTime = new Date();
+    const expectedChar = normalizeChar(cursorCharacter.innerText);
+    const typedKey = normalizeChar(key);
+    if (typedKey === expectedChar) {
+      cursorCharacter.classList.add('correct');
+      cursorCharacter.classList.remove('cursor');
+      cursorCharacter = characters[++cursorIndex];
+      ++typeCorrect;
+      ++typeSum;
+    } else if (key === "Backspace" || key === "Delete") {
+      if (cursorIndex > 0) {
+        cursorCharacter.classList.remove('cursor');
+        cursorCharacter = characters[--cursorIndex];
+        cursorCharacter.classList.remove('correct', 'incorrect');
+      }
+    } else if (key === "Shift") {
+      cursorCharacter = characters[cursorIndex];
+    } else {
+      cursorCharacter.classList.add('incorrect');
+      cursorCharacter.classList.remove('cursor');
+      cursorCharacter = characters[++cursorIndex];
+      ++typeSum;
+    }
+    const stats = updateStats();
+    if (cursorIndex >= characters.length) {
+      document.removeEventListener('keydown', keydown);
+      activeKeydown = null;
+      statsResetPending = true;
+      if (stats) {
+        updateLeaderboard(stats.wpm, stats.accuracy);
+      }
+      renderNewQuote(false);
+      return;
+    }
+    const divisions = 102 / characters.length;
+    document.getElementById('dynamicBar').style.width = divisions * cursorIndex + '%';
+    document.getElementById('dynamicBar').style.animationTimingFunction = "ease";
+    if (cursorCharacter) cursorCharacter.classList.add('cursor');
+  };
+  document.addEventListener('keydown', keydown);
+  activeKeydown = keydown;
+}
+// Buttons
+document.getElementById('restart').addEventListener('click', () => {
+  statsResetPending = true;
+  renderNewQuote(true);
+});
+document.getElementById('newquote').addEventListener('click', () => {
+  statsResetPending = true;
+  renderNewQuote(false);
+});
+// Clear Scores button
+document.getElementById('clear-score').addEventListener('click', () => {
+  leaderboard = [];
+  for (let i = 1; i <= 5; i++) {
+    const rank = String(i).padStart(2, '0'); // 01, 02...
+    const wpmEl = document.getElementById(rank);
+    const accEl = document.getElementById('a' + rank);
+    if (wpmEl) wpmEl.innerText = '00';
+    if (accEl) accEl.innerText = '00';
+  }
+  // Reset averages
+  document.querySelectorAll('.avg-wpm').forEach(el => el.innerText = '00');
+  document.querySelectorAll('.avg-acc').forEach(el => el.innerText = '00');
+});
+// Initial load
+quoteDisplayElement.innerHTML = "<p>Loading movie quote...</p>";
+renderNewQuote();
+</script>
+</body>
+</html>
